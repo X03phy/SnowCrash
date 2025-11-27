@@ -13,6 +13,7 @@ We are logged as level00.
 	/home/user/level00
 
 	$ ls -la
+	...
 
 All files here are standard shell configuration files (.bashrc, .profile, etc.) with no exploitable content.
 
