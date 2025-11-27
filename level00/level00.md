@@ -54,7 +54,7 @@ Using a Caesar shift of +15 (or -11), the decoded string is:
 
 ### 6. Getting the flag
 
-Let's test this to login into flag00.
+Let's test this to login to flag00.
 
 	$ su flag00
 	Password: 
