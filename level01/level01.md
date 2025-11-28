@@ -42,10 +42,25 @@ This file can be read.
 	flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
 	...
 
+https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/
+
 There is one hashed password only for the user flag01.
 
 Let's decode it.
 
 ### 5. Decode hashed password
 
+https://man.archlinux.org/man/crypt.5.en#descrypt_(Traditional_DES)
+
+https://tldp.org/HOWTO/Security-HOWTO/password-security.html
+
+Most Unicies (and Linux is no exception) primarily use a one-way encryption algorithm, called DES (Data Encryption Standard) to encrypt your passwords.
+This encrypted password is then stored in (typically) /etc/passwd (or less commonly) /etc/shadow.
+
+
 	42hDRfypTqqnw:abcdefg
+
+### 6. Getting the flag
+
+	$ getflag
+	Check flag.Here is your token : f2av5il02puano7naaf6adaaf
