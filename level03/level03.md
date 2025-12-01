@@ -44,7 +44,11 @@ To understand what happens, we load the binary into gdb.
 
 *(This challenge is similar to the first RootMe scripting challenge.)*
 
-### 3. Exploiting the ELF
+### 4. Exploiting the ELF
+
+**Doc :**
+
+https://www.thehacker.recipes/infra/privilege-escalation/unix/suid-sgid-binaries
 
 We start by opening the binary in gdb :
 
@@ -85,7 +89,7 @@ This gives the following disassembly:
 	0x08048504 <+96>:	ret    
 	End of assembler dump.
 
-### 4. Identifying the vulnerability
+### 5. Identifying the vulnerability
 
 The most interesting part is the call to system() :
 
@@ -99,7 +103,7 @@ This means the program calls :
 
 	system((char *)0x80485e0)
 
-### 5. Inspecting the system() argument
+### 6. Inspecting the system() argument
 
 In gdb :
 
@@ -109,9 +113,7 @@ This gives us the argument used :
 
 	0x80485e0:	 "/usr/bin/env echo Exploit me"
 
-
 **➡️ The binary executes a system command without specifying an absolute path for the executable.**
-
 
 system() invokes /bin/sh -c \<command\>.
 
@@ -119,7 +121,7 @@ If \<command\> contains a program name without a path, it will search through $P
 
 This allows a **PATH hijacking**.
 
-### 6. Exploitation
+### 7. Exploitation
 
 #### A. Create a malicious file
 ```
@@ -137,7 +139,7 @@ $ export PATH=/tmp:$PATH
 $ ./level03
 ```
 
-### 5. Getting the flag
+### 8. Getting the flag
 
 Inside of our new shell :
 
