@@ -1,4 +1,4 @@
-# Level01
+# Level02
 
 ### 1. Identity
 
@@ -25,16 +25,57 @@ A PCAP (Packet Capture) file contains recorded raw network packets.
 
 https://www.sysdig.com/learn-cloud-native/what-is-a-pcap-file
 
-
 To analyze this file, we need to export it to our host machine and open it in **Wireshark**.
 
-### 3. Analyze file with Wireshark
+### 3. Extracting the PCAP file
 
-To extract the file from our VM to our PC, we do :
+We copy the file from the VM to our local machine using SCP:
 
-	dewqdew
-	deew
-	
+	scp -P 4243 level02@127.0.0.1:/home/user/level02/level02.pcap ~/snowcrash/
+
+### 4. Analyzing the PCAP with Wireshark
+
+To analyze the **.pcap** file, open it with Wireshark and follow the TCP stream:
+
+	Analyze -> Follow -> TCP Stream
+
+This shows the data sent by the client :
+
+	ft_wandr...NDRel.L0L
+
+The password seems to contain dots (.), but trying it directly fails :
+
+	$ su flag02
+	Password: ft_wandr...NDRel.L0L
+	su: Authentication failure
+
+**Why do we see dots?**
+
+Wireshark displays non-printable ASCII characters as dots.
+By switching the display to Hex Dump (bottom section), we can view the raw bytes.
+
+Each dot (.) corresponds to the byte :
+
+	7F
+
+Hex 7F is ASCII DEL, meaning a delete/backspace character.
+
+So the user actually typed:
+- A few characters,
+- Then pressed Backspace (DEL),
+- Then continued typing.
+
+After removing the deleted chars, the real password becomes:
+
+	ft_waNDReL0L
 
 
-	kooda2puivaav1idi4f57q8iq
+### 7. Getting the flag
+
+	$ su flag02
+	Password: ft_waNDReL0L
+
+	$ getflag
+	Check flag.Here is your token : kooda2puivaav1idi4f57q8iq
+
+Flag successfully retrieved.
