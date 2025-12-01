@@ -56,11 +56,9 @@ To extract the file from our vm :
 
 ### 6. Decode hashed password
 
-The password field in /etc/passwd contains a traditional **DES-based crypt hash** (13 characters).
-
-The first two characters as the salt.
-
-The remaining eleven characters as the encrypted password.
+The password field in /etc/passwd contains a traditional **DES-based crypt hash** (13 characters) :
+- The first two characters as the salt.
+- The remaining eleven characters as the encrypted password.
 
 **More information:**
 
