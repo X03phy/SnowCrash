@@ -5,7 +5,7 @@
 	$ id
 	uid=2000(level00) gid=2000(level00) groups=200(level00),100(users)
 
-We are logged as level00.
+We are logged as **level00**.
 
 ### 2. Home directory
 
@@ -43,7 +43,7 @@ Just to know, rofs means : Read-Only File System. rofs contains an original vers
 Both files contain the same string.
 
 Trying this as a password for flag00 does not work.
-The string looks like a simple substitution cipher, more specifically a Caesar cipher.
+The string looks like a simple substitution cipher, more specifically a **Caesar cipher**.
 
 ### 5. Decoding
 

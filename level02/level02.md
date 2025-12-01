@@ -5,7 +5,7 @@
 	$ id
 	uid=2002(level02) gid=2002(level02) groups=2002(level02),100(users)
 
-We are logged as level02.
+We are logged as **level02**.
 
 ### 2. Home directory
 
@@ -17,14 +17,16 @@ We are logged as level02.
 	----r--r-- 1 flag02  level02 8302 Aug 30  2015 level02.pcap
 	...
 
-All files here are standard shell configuration files (.bashrc, .profile, etc.) with no exploitable content except for one : level02.pcap.
+All files here are standard shell configuration files (.bashrc, .profile, etc.) with no exploitable content except for one : **level02.pcap**.
+
+A PCAP (Packet Capture) file contains recorded raw network packets.
+
+**More details:**
 
 https://www.sysdig.com/learn-cloud-native/what-is-a-pcap-file
 
-A PCAP (Packet Capture) file is a data file used to store network traffic captured during packet sniffing.
-It records the raw data packets traveling across a network, allowing IT and security teams to analyze network behavior, troubleshoot issues, and detect security threats.
 
-Let's analyze this file using wireshark.
+To analyze this file, we need to export it to our host machine and open it in **Wireshark**.
 
 ### 3. Analyze file with Wireshark
 

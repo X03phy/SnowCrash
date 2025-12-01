@@ -5,7 +5,7 @@
 	$ id
 	uid=2001(level01) gid=2001(level01) groups=2001(level01),100(users)
 
-We are logged as level01.
+We are logged as **level01**.
 
 ### 2. Home directory
 
@@ -48,9 +48,15 @@ There is one hashed password only for the user flag01.
 
 Let's decode it.
 
-### 5. Decode hashed password
+### 5. Extracting the passwd file
 
-The password field in /etc/passwd contains a traditional DES-based crypt hash (13 characters).
+To extract the file from our vm :
+
+	scp -P 4242 level01@127.0.0.1:/etc/passwd ~/snowcrash/hash.txt
+
+### 6. Decode hashed password
+
+The password field in /etc/passwd contains a traditional **DES-based crypt hash** (13 characters).
 
 The first two characters as the salt.
 
@@ -64,10 +70,6 @@ https://tldp.org/HOWTO/Security-HOWTO/password-security.html
 
 Let's crack it !
 
-To extract the file from our vm :
-
-	scp -P 4242 level01@127.0.0.1:/etc/passwd ~/snowcrash/hash.txt
-
 Cracking the hash with hashcat or john :
 
 	hashcat -m 1500 ~/snowcrash/hash.txt /usr/share/wordlists/rockyou.txt
@@ -80,7 +82,7 @@ Gives you the same result :
 
 	42hDRfypTqqnw:abcdefg
 
-### 6. Getting the flag
+### 7. Getting the flag
 
 	$ su flag01
 	Password: abcdefg
