@@ -50,17 +50,42 @@ Let's decode it.
 
 ### 5. Decode hashed password
 
+The password field in /etc/passwd contains a traditional DES-based crypt hash (13 characters).
+
+The first two characters as the salt.
+
+The remaining eleven characters as the encrypted password.
+
+**More information:**
+
 https://man.archlinux.org/man/crypt.5.en#descrypt_(Traditional_DES)
 
 https://tldp.org/HOWTO/Security-HOWTO/password-security.html
 
-Most Unicies (and Linux is no exception) primarily use a one-way encryption algorithm, called DES (Data Encryption Standard) to encrypt your passwords.
-This encrypted password is then stored in (typically) /etc/passwd (or less commonly) /etc/shadow.
+Let's crack it !
 
+To extract the file from our vm :
+
+	scp -P 4242 level01@127.0.0.1:/etc/passwd ~/snowcrash/hash.txt
+
+Cracking the hash with hashcat or john :
+
+	hashcat -m 1500 ~/snowcrash/hash.txt /usr/share/wordlists/rockyou.txt
+	hashcat -m 1500 ~/snowcrash/hash.txt --show
+
+	john --format=descrypt ~/snowcrash/hash.txt
+	john --show ~/snowcrash/hash.txt
+
+Gives you the same result :
 
 	42hDRfypTqqnw:abcdefg
 
 ### 6. Getting the flag
 
+	$ su flag01
+	Password: abcdefg
+
 	$ getflag
 	Check flag.Here is your token : f2av5il02puano7naaf6adaaf
+
+Flag successfully retrieved.

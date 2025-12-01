@@ -58,8 +58,8 @@ Using a Caesar shift of +15 (or -11), the decoded string is:
 Let's test this to login to flag00.
 
 	$ su flag00
-	Password: 
-	Don't forget to launch getflag !
+	Password: nottoohardhere
+
 
 It works !!!
 
