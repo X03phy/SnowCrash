@@ -70,7 +70,7 @@ After removing the deleted chars, the real password becomes:
 	ft_waNDReL0L
 
 
-### 7. Getting the flag
+### 5. Getting the flag
 
 	$ su flag02
 	Password: ft_waNDReL0L
