@@ -48,6 +48,7 @@ To understand what happens, we load the binary into gdb.
 
 **Doc :**
 
+https://perso.ens-lyon.fr/daniel.hirschkoff/C_Caml/docs/doc_gdb.pdf
 https://www.thehacker.recipes/infra/privilege-escalation/unix/suid-sgid-binaries
 
 We start by opening the binary in gdb :
