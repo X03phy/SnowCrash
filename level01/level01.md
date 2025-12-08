@@ -52,7 +52,7 @@ Let's decode it.
 
 To extract the file from our vm :
 
-	scp -P 4242 level01@127.0.0.1:/etc/passwd ~/snowcrash/hash.txt
+	scp -P 4243 level01@127.0.0.1:/etc/passwd ~/snowcrash/hash.txt
 
 ### 6. Decode hashed password
 
