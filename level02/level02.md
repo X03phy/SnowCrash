@@ -1,13 +1,13 @@
 # Level02
 
-### 1. Identity
+## 1. Identity
 
 	$ id
 	uid=2002(level02) gid=2002(level02) groups=2002(level02),100(users)
 
 We are logged as **level02**.
 
-### 2. Home directory
+## 2. Home directory
 
 	$ pwd
 	/home/user/level02
@@ -27,13 +27,13 @@ https://www.sysdig.com/learn-cloud-native/what-is-a-pcap-file
 
 To analyze this file, we need to export it to our host machine and open it in **Wireshark**.
 
-### 3. Extracting the PCAP file
+## 3. Extracting the PCAP file
 
 We copy the file from the VM to our local machine using SCP:
 
 	scp -P 4243 level02@127.0.0.1:/home/user/level02/level02.pcap ~/snowcrash/
 
-### 4. Analyzing the PCAP with Wireshark
+## 4. Analyzing the PCAP with Wireshark
 
 To analyze the **.pcap** file, open it with Wireshark and follow the TCP stream:
 
@@ -70,7 +70,7 @@ After removing the deleted chars, the real password becomes:
 	ft_waNDReL0L
 
 
-### 5. Getting the flag
+## 5. Getting the flag
 
 	$ su flag02
 	Password: ft_waNDReL0L

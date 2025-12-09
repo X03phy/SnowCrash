@@ -1,6 +1,6 @@
 # Level06
 
-### 1. Identity
+## 1. Identity
 
 ```bash
 $ id
@@ -9,7 +9,7 @@ uid=2006(level06) gid=2006(level06) groups=2006(level06),100(users)
 
 We are logged in as **level06**.
 
-### 2. Home directory
+## 2. Home directory
 
 ```bash
 $ pwd

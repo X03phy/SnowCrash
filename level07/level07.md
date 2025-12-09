@@ -1,6 +1,6 @@
 # Level07
 
-### 1. Identity
+## 1. Identity
 
 ```bash
 $ id
@@ -9,7 +9,7 @@ uid=2007(level07) gid=2007(level07) groups=2007(level07),100(users)
 
 We are logged in as **level07**.
 
-### 2. Home directory
+## 2. Home directory
 
 ```bash
 $ pwd
@@ -28,7 +28,7 @@ We have a SUID binary owned by flag07:
 
 This means the binary will execute with the UID of **flag07**, which is exactly what we need to retrieve the next flag.
 
-### 3. Analyzing the ELF
+## 3. Analyzing the ELF
 
 With `strings` :
 
@@ -49,7 +49,7 @@ LOGNAME=level07
 ...
 ```
 
-### 4. Exploiting the ELF
+## 4. Exploiting the ELF
 
 We just have to modify the env variable `LOGNAME` so it can execute getflag in the program.
 
@@ -59,7 +59,7 @@ What we do :
 $ export LOGNAME=$(getflag)
 ```
 
-### 5. Getting the FLAG
+## 5. Getting the FLAG
 
 We now get the following output :
 

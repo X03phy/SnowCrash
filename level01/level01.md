@@ -1,13 +1,13 @@
 # Level01
 
-### 1. Identity
+## 1. Identity
 
 	$ id
 	uid=2001(level01) gid=2001(level01) groups=2001(level01),100(users)
 
 We are logged as **level01**.
 
-### 2. Home directory
+## 2. Home directory
 
 	$ pwd
 	/home/user/level01
@@ -17,7 +17,7 @@ We are logged as **level01**.
 
 All files here are standard shell configuration files (.bashrc, .profile, etc.) with no exploitable content.
 
-### 3. Searching files owned by our user
+## 3. Searching files owned by our user
 
 	$ find / -user level01 2>/dev/null
 	...
@@ -25,7 +25,7 @@ All files here are standard shell configuration files (.bashrc, .profile, etc.) 
 
 Nothing interesting here.
 
-### 4. Searching password files
+## 4. Searching password files
 
 	$ ls -l etc/shadow
 	-rw-r----- 1 root shadow 4428 Mar  6  2016 etc/shadow
@@ -48,13 +48,13 @@ There is one hashed password only for the user flag01.
 
 Let's decode it.
 
-### 5. Extracting the passwd file
+## 5. Extracting the passwd file
 
 To extract the file from our vm :
 
 	scp -P 4243 level01@127.0.0.1:/etc/passwd ~/snowcrash/hash.txt
 
-### 6. Decode hashed password
+## 6. Decode hashed password
 
 The password field in /etc/passwd contains a traditional **DES-based crypt hash** (13 characters) :
 - The first two characters as the salt.
@@ -80,7 +80,7 @@ Gives you the same result :
 
 	42hDRfypTqqnw:abcdefg
 
-### 7. Getting the flag
+## 7. Getting the flag
 
 	$ su flag01
 	Password: abcdefg

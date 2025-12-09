@@ -1,6 +1,6 @@
 # Level10
 
-### 1. Identity
+## 1. Identity
 
 ```bash
 $ id
@@ -9,7 +9,7 @@ uid=2010(level10) gid=2010(level10) groups=2010(level10),100(users)
 
 We are logged in as **level10**.
 
-### 2. Home directory
+## 2. Home directory
 
 ```bash
 $ pwd
@@ -39,7 +39,7 @@ Connecting to localhost:6969 .. Unable to connect to host localhost
 
 It seems that our program is trying to connect to port `6969`.
 
-### 3. Analyzing the binary
+## 3. Analyzing the binary
 
 Using `strings` :
 
@@ -76,11 +76,11 @@ We will use the short time between `access` and `open` to change the file to be 
 
 A race condition consists in quickly changing the pointing of a symbolic link between a file of which we have the rights and the file of which we don't have, so that `access` will returns us 'true' while `open` will opens the correct file.
 
-### 4. Using race condition exploit
+## 4. Using race condition exploit
 
 We have to open 3 windows.
 
-#### First Terminal - listener (must run first)
+### First Terminal - listener (must run first)
 
 Listen to the port 6969 with netcat.
 
@@ -91,7 +91,7 @@ $ nc -lk 6969
 - l : specify netcat should listen on specified port
 - k : to stay listening after each connection
 
-#### Second Terminal - fast symlink toggler (swap target continuously)
+### Second Terminal - fast symlink toggler (swap target continuously)
 
 We need a very fast toggler that repeatedly points `/tmp/level10_link` to a readable file (so `access()` succeeds) then immediately to the real protected file (`/home/user/level10/token`).
 
@@ -106,7 +106,7 @@ while true; do
 done
 ```
 
-#### Third Terminal - run the vulnerable SUID program
+### Third Terminal - run the vulnerable SUID program
 
 Now we run an infinte loop that runs the SUID binary and request the `/tmp/level10_link` file to be sent to `localhost` :
 
@@ -116,7 +116,7 @@ while true; do
 done
 ```
 
-### 5. Getting the flag
+## 5. Getting the flag
 
 After running our 3 terminals we get in our first Terminal :
 

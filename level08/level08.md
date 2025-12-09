@@ -1,6 +1,6 @@
 # Level08
 
-### 1. Identity
+## 1. Identity
 
 ```bash
 $ id
@@ -9,7 +9,7 @@ uid=2008(level08) gid=2008(level08) groups=2008(level08),100(users)
 
 We are logged in as **level08**.
 
-### 2. Home directory
+## 2. Home directory
 
 ```bash
 $ pwd
@@ -29,7 +29,7 @@ $ ./level08 token
 You may not access 'token'
 ```
 
-### 3. Analyzing the files
+## 3. Analyzing the files
 
 With `strings` :
 
@@ -49,7 +49,7 @@ If it has `token`, it won't be read.
 
 Unfortunately, it is not possible to copy the file `token` and rename it.
 
-### 4. Exploiting the files
+## 4. Exploiting the files
 
 We are going to use **simlinks**.
 
@@ -57,7 +57,7 @@ We are going to use **simlinks**.
 $ ln -s /home/user/level08/token /tmp/flag
 ```
 
-### 5. Getting the flag
+## 5. Getting the flag
 
 Let's try again with our new file.
 

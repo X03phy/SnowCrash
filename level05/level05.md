@@ -1,6 +1,6 @@
 # Level05
 
-### 0. Login
+## 0. Login
 
 When logging in as level05, we immediately see:
 
@@ -8,14 +8,14 @@ When logging in as level05, we immediately see:
 
 We keep this in mind but continue with the main investigation.
 
-### 1. Identity
+## 1. Identity
 
 	$ id
 	uid=2005(level05) gid=2005(level05) groups=2005(level05),100(users)
 
 We are logged in as **level05**.
 
-### 2. Home directory
+## 2. Home directory
 
 	$ pwd
 	/home/user/level05
@@ -25,7 +25,7 @@ We are logged in as **level05**.
 
 All files here are standard shell configuration files (.bashrc, .profile, etc.) with nothing exploitable.
 
-### 3. Searching files owned by our user
+## 3. Searching files owned by our user
 
 	$ find / -user level05 2>/dev/null
 
@@ -40,7 +40,7 @@ Since the goal of each level is to obtain the flagXX token, we also search for f
 
 Two files appear, one on the live system and one on the read‑only filesystem.
 
-### 4. Searching openarenaserver files
+## 4. Searching openarenaserver files
 
 Let's check the files permissions :
 
@@ -70,7 +70,7 @@ This script:
 - Executes each one with bash -x
 - Deletes it afterwards
 
-### 5. ACL of /opt/openarenaserver
+## 5. ACL of /opt/openarenaserver
 
 Let's check the Access Control List for the **/opt/openarenaserver** directory :
 
@@ -90,7 +90,7 @@ Let's check the Access Control List for the **/opt/openarenaserver** directory :
 
 This means we can drop any script in /opt/openarenaserver/ and the system will execute it as **flag05** the next time the cron job (or scheduled task) runs openarenaserver.
 
-### 6. Cron Job Execution
+## 6. Cron Job Execution
 
 From the user’s mailbox:
 
@@ -105,7 +105,7 @@ So **every 2 minutes**, the system runs openarenaserver as **flag05**.
 
 Combined with our write access to /opt/openarenaserver/, this gives us a privilege escalation path.
 
-### 7. Exploitation
+## 7. Exploitation
 
 To obtain the flag, we simply drop a malicious script into /opt/openarenaserver/.
 
@@ -115,7 +115,7 @@ To obtain the flag, we simply drop a malicious script into /opt/openarenaserver/
 Then wait for the cron job (up to 2 minutes).
 It executes our script as flag05, then deletes it.
 
-### 8. Getting the flag
+## 8. Getting the flag
 
 After the cron job runs:
 

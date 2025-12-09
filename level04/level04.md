@@ -1,13 +1,13 @@
 # Level03
 
-### 1. Identity
+## 1. Identity
 
 	$ id
 	uid=2004(level04) gid=2004(level04) groups=2004(level04),100(users)
 
 We are logged in as **level04**.
 
-### 2. Home directory
+## 2. Home directory
 
 	$ pwd
 	/home/user/level04
@@ -26,7 +26,7 @@ Running it:
 	$ ./level04.pl 
 	Content-type: text/html
 
-### 3. Analyzing the script
+## 3. Analyzing the script
 
 Here is the code with comments :
 
@@ -55,7 +55,7 @@ The vulnerability is obvious:
 - The script runs with UID flag04 (SUID bit)
 - Therefore: we can inject getflag to retrieve the token.
 
-### 4. Getting the flag
+## 4. Getting the flag
 
 We can simply send a GET request with an injected command.
 Backticks must be URL‑encoded as %60.
