@@ -4,39 +4,29 @@
 
 ```bash
 $ id
-uid=2010(level10) gid=2010(level10) groups=2010(level10),100(users)
+uid=2011(level11) gid=2011(level11) groups=2011(level11),100(users)
 ```
 
-We are logged in as **level10**.
+We are logged in as **level11**.
 
 ## 2. Home directory
 
 ```bash
 $ pwd
-/home/user/level10
+/home/user/level11
 
 $ ls -la
 [...]
--rwsr-sr-x+ 1 flag10  level10 10817 Mar  5  2016 level10
--rw-------  1 flag10  flag10     26 Mar  5  2016 token
+-rwsr-sr-x  1 flag11  level11  668 Mar  5  2016 level11.lua
 [...]
 ```
 
-`token` is not readable
+## 3. Analyzing the lua file
 
-Let's execute this binary :
+About lua files : [Wikipedia](https://fr.wikipedia.org/wiki/Lua)
+
+This file creates a local server with an IP adress and a port so let's listen it with netcat and try to understand how we can get our flag.
+
+## 4. Testing it with netcat
 
 ```bash
-$ ./level10 file host
-	sends file to host if you have access to it
-
-$ ./level10 token localhost
-You don't have access to token
-
-$ ./level10 /bin/ls localhost
-Connecting to localhost:6969 .. Unable to connect to host localhost
-```
-
-It seems that our program is trying to connect to port `6969`.
-
-## 3. Analyzing the binary
